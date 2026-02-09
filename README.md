@@ -59,7 +59,7 @@ root/ # Directorio raíz del proyecto
 ├── tsconfig.app.json # Configuración de TypeScript para la aplicación
 ├── tsconfig.node.json # Configuración de TypeScript para Node.js
 │
-├── tailwind.config.ts # Configuración de Tailwind CSS
+├── tailwind.config.js # Configuración de Tailwind CSS
 ├── postcss.config.js # Configuración de PostCSS
 ├── eslint.config.js # Configuración de ESLint
 ├── vite.config.ts # Configuración de Vite

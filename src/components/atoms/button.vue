@@ -5,7 +5,7 @@
         :label="label"
         :disabled="disabled"
         :class="cn(buttonVariant({ variant, size }))"
-        :style="getTokens()"
+        data-tokens
     >
         <slot>{{ label }}</slot>
     </button>

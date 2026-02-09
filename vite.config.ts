@@ -4,7 +4,6 @@
 import { dirname, join, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
-import tailwindcss from '@tailwindcss/vite';
 import vue from '@vitejs/plugin-vue';
 import { playwright } from '@vitest/browser-playwright';
 import { defineConfig } from 'vite';
@@ -27,7 +26,7 @@ export default defineConfig({
             },
         },
     },
-    plugins: [vue(), tailwindcss(), dts({ rollupTypes: true, tsconfigPath: 'tsconfig.dts.json' })],
+    plugins: [vue(), dts({ rollupTypes: true, tsconfigPath: 'tsconfig.dts.json' })],
     resolve: {
         alias: {
             '@': resolve(_dirname, 'src'),

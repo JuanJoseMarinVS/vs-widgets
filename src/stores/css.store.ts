@@ -148,7 +148,7 @@ const defaultCommonCss: CommonCssVarsInterface = {
     'border-width-heavy': 4,
 };
 
-type DesignTokens = Record<`--${keyof ThemeCssVarsInterface | keyof CommonCssVarsInterface}`, string>;
+type DesignTokens = Record<`--ds-${keyof ThemeCssVarsInterface | keyof CommonCssVarsInterface}`, string>;
 type CssStoreState = {
     light: ThemeCssVarsInterface;
     dark: ThemeCssVarsInterface;
@@ -162,6 +162,33 @@ const state = reactive<CssStoreState>({
     common: defaultCommonCss,
     tokens: {} as DesignTokens,
 });
+
+export const setTokensWhenReady = (tokens: Record<string, string>) => {
+    const applyTokensToDom = (tokens: Record<string, string>) => {
+        const cssVars = Object.entries(tokens)
+            .map(([key, value]) => `${key}: ${value};`)
+            .join('\n    ');
+
+        const styleTag = document.createElement('style');
+        styleTag.textContent = `[data-tokens] {\n    ${cssVars}\n}`;
+        styleTag.id = 'ds-tokens-style';
+
+        // Reemplaza el style anterior si existe
+        const existingStyle = document.getElementById(styleTag.id);
+        if (existingStyle) {
+            existingStyle.replaceWith(styleTag);
+        } else {
+            document.head.appendChild(styleTag);
+        }
+    };
+
+    console.log(document.readyState);
+    if (document.readyState !== 'complete') {
+        document.addEventListener('DOMContentLoaded', () => applyTokensToDom(tokens), { once: true });
+    } else {
+        applyTokensToDom(tokens);
+    }
+};
 
 export function setLight(cssVars: Partial<ThemeCssVarsInterface>) {
     (
@@ -205,7 +232,7 @@ export function setTokens(theme: ThemeMode = 'light') {
             [keyof ThemeCssVarsInterface, ThemeCssVarsInterface[keyof ThemeCssVarsInterface]]
         >
     ).forEach(([key, value]) => {
-        tokens[`--${key}`] = value;
+        tokens[`--ds-${key}`] = value;
     });
 
     (
@@ -213,9 +240,10 @@ export function setTokens(theme: ThemeMode = 'light') {
             [keyof CommonCssVarsInterface, CommonCssVarsInterface[keyof CommonCssVarsInterface]]
         >
     ).forEach(([key, value]) => {
-        tokens[`--${key}`] = String(value);
+        tokens[`--ds-${key}`] = String(value);
     });
 
+    setTokensWhenReady(tokens);
     state.tokens = tokens;
 }
 
