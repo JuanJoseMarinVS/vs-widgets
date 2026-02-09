@@ -1,0 +1,170 @@
+@import 'tailwindcss';
+@plugin 'daisyui';
+
+:root, :host {
+    --ds-color-brand: initial;
+    --ds-color-brand-focus: initial;
+    --ds-color-brand-content: initial;
+    --ds-color-brand-soft: initial;
+    --ds-color-secondary: initial;
+    --ds-color-secondary-focus: initial;
+    --ds-color-secondary-content: initial;
+    --ds-color-secondary-soft: initial;
+    --ds-color-accent: initial;
+    --ds-color-accent-focus: initial;
+    --ds-color-accent-content: initial;
+    --ds-color-accent-soft: initial;
+    --ds-color-neutral: initial;
+    --ds-color-neutral-focus: initial;
+    --ds-color-neutral-content: initial;
+    --ds-color-neutral-soft: initial;
+    --ds-color-base-100: initial;
+    --ds-color-base-200: initial;
+    --ds-color-base-300: initial;
+    --ds-color-base-400: initial;
+    --ds-color-base-content: initial;
+    --ds-color-info: initial;
+    --ds-color-info-focus: initial;
+    --ds-color-info-content: initial;
+    --ds-color-info-soft: initial;
+    --ds-color-success: initial;
+    --ds-color-success-focus: initial;
+    --ds-color-success-content: initial;
+    --ds-color-success-soft: initial;
+    --ds-color-warning: initial;
+    --ds-color-warning-focus: initial;
+    --ds-color-warning-content: initial;
+    --ds-color-warning-soft: initial;
+    --ds-color-error: initial;
+    --ds-color-error-focus: initial;
+    --ds-color-error-content: initial;
+    --ds-color-error-soft: initial;
+    --ds-space-container-padding-xs: initial;
+    --ds-space-container-padding-sm: initial;
+    --ds-space-container-padding-md: initial;
+    --ds-space-container-padding-lg: initial;
+    --ds-space-container-padding-xl: initial;
+    --ds-space-interactive-padding-x-sm: initial;
+    --ds-space-interactive-padding-y-sm: initial;
+    --ds-space-interactive-padding-x-md: initial;
+    --ds-space-interactive-padding-y-md: initial;
+    --ds-space-interactive-padding-x-lg: initial;
+    --ds-space-interactive-padding-y-lg: initial;
+    --ds-space-interactive-padding-x-xl: initial;
+    --ds-space-interactive-padding-y-xl: initial;
+    --ds-space-container-gap-xxs: initial;
+    --ds-space-container-gap-xs: initial;
+    --ds-space-container-gap-sm: initial;
+    --ds-space-container-gap-md: initial;
+    --ds-space-container-gap-lg: initial;
+    --ds-space-container-gap-xl: initial;
+    --ds-space-interactive-gap-sm: initial;
+    --ds-space-interactive-gap-md: initial;
+    --ds-space-interactive-gap-lg: initial;
+    --ds-space-interactive-gap-xl: initial;
+    --ds-shape-container-radius-none: initial;
+    --ds-shape-container-radius-xs: initial;
+    --ds-shape-container-radius-sm: initial;
+    --ds-shape-container-radius-md: initial;
+    --ds-shape-container-radius-lg: initial;
+    --ds-shape-container-radius-xl: initial;
+    --ds-shape-interactive-radius-none: initial;
+    --ds-shape-interactive-radius-sm: initial;
+    --ds-shape-interactive-radius-md: initial;
+    --ds-shape-interactive-radius-full: initial;
+    --ds-border-width-none: initial;
+    --ds-border-width-hairline: initial;
+    --ds-border-width-default: initial;
+    --ds-border-width-thick: initial;
+    --ds-border-width-heavy: initial;
+}
+
+@theme {
+    /* COLORS */
+    --color-brand: var(--ds-color-brand);
+    --color-brand-focus: var(--ds-color-brand-focus);
+    --color-brand-content: var(--ds-color-brand-content);
+    --color-brand-soft: var(--ds-color-brand-soft);
+
+    --color-secondary: var(--ds-color-secondary);
+    --color-secondary-focus: var(--ds-color-secondary-focus);
+    --color-secondary-content: var(--ds-color-secondary-content);
+    --color-secondary-soft: var(--ds-color-secondary-soft);
+
+    --color-accent: var(--ds-color-accent);
+    --color-accent-focus: var(--ds-color-accent-focus);
+    --color-accent-content: var(--ds-color-accent-content);
+    --color-accent-soft: var(--ds-color-accent-soft);
+
+    --color-neutral: var(--ds-color-neutral);
+    --color-neutral-focus: var(--ds-color-neutral-focus);
+    --color-neutral-content: var(--ds-color-neutral-content);
+    --color-neutral-soft: var(--ds-color-neutral-soft);
+
+    --color-base-100: var(--ds-color-base-100);
+    --color-base-200: var(--ds-color-base-200);
+    --color-base-300: var(--ds-color-base-300);
+    --color-base-400: var(--ds-color-base-400);
+    --color-base-content: var(--ds-color-base-content);
+
+    --color-info: var(--ds-color-info);
+    --color-info-focus: var(--ds-color-info-focus);
+    --color-info-content: var(--ds-color-info-content);
+    --color-info-soft: var(--ds-color-info-soft);
+
+    --color-success: var(--ds-color-success);
+    --color-success-focus: var(--ds-color-success-focus);
+    --color-success-content: var(--ds-color-success-content);
+    --color-success-soft: var(--ds-color-success-soft);
+
+    --color-warning: var(--ds-color-warning);
+    --color-warning-focus: var(--ds-color-warning-focus);
+    --color-warning-content: var(--ds-color-warning-content);
+    --color-warning-soft: var(--ds-color-warning-soft);
+
+    /* SPACING */
+    --space-container-padding-xs: var(--ds-space-container-padding-xs);
+    --space-container-padding-sm: var(--ds-space-container-padding-sm);
+    --space-container-padding-md: var(--ds-space-container-padding-md);
+    --space-container-padding-lg: var(--ds-space-container-padding-lg);
+    --space-container-padding-xl: var(--ds-space-container-padding-xl);
+
+    --space-interactive-padding-x-sm: var(--ds-space-interactive-padding-x-sm);
+    --space-interactive-padding-y-sm: var(--ds-space-interactive-padding-y-sm);
+    --space-interactive-padding-x-md: var(--ds-space-interactive-padding-x-md);
+    --space-interactive-padding-y-md: var(--ds-space-interactive-padding-y-md);
+    --space-interactive-padding-x-lg: var(--ds-space-interactive-padding-x-lg);
+    --space-interactive-padding-y-lg: var(--ds-space-interactive-padding-y-lg);
+    --space-interactive-padding-x-xl: var(--ds-space-interactive-padding-x-xl);
+    --space-interactive-padding-y-xl: var(--ds-space-interactive-padding-y-xl);
+
+    --space-container-gap-xxs: var(--ds-space-container-gap-xxs);
+    --space-container-gap-xs: var(--ds-space-container-gap-xs);
+    --space-container-gap-sm: var(--ds-space-container-gap-sm);
+    --space-container-gap-md: var(--ds-space-container-gap-md);
+    --space-container-gap-lg: var(--ds-space-container-gap-lg);
+    --space-container-gap-xl: var(--ds-space-container-gap-xl);
+    --space-interactive-gap-sm: var(--ds-space-interactive-gap-sm);
+    --space-interactive-gap-md: var(--ds-space-interactive-gap-md);
+    --space-interactive-gap-lg: var(--ds-space-interactive-gap-lg);
+    --space-interactive-gap-xl: var(--ds-space-interactive-gap-xl);
+
+    /* RADIUS */
+    --shape-container-radius-none: var(--ds-shape-container-radius-none);
+    --shape-container-radius-xs: var(--ds-shape-container-radius-xs);
+    --shape-container-radius-sm: var(--ds-shape-container-radius-sm);
+    --shape-container-radius-md: var(--ds-shape-container-radius-md);
+    --shape-container-radius-lg: var(--ds-shape-container-radius-lg);
+    --shape-container-radius-xl: var(--ds-shape-container-radius-xl);
+    --shape-interactive-radius-none: var(--ds-shape-interactive-radius-none);
+    --shape-interactive-radius-sm: var(--ds-shape-interactive-radius-sm);
+    --shape-interactive-radius-md: var(--ds-shape-interactive-radius-md);
+    --shape-interactive-radius-full: var(--ds-shape-interactive-radius-full);
+
+    /* BORDER */
+    --border-width-none: var(--ds-border-width-none);
+    --border-width-hairline: var(--ds-border-width-hairline);
+    --border-width-default: var(--ds-border-width-default);
+    --border-width-thick: var(--ds-border-width-thick);
+    --border-width-heavy: var(--ds-border-width-heavy);
+}
