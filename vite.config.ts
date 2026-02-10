@@ -1,63 +1,37 @@
-/// <reference types="vitest/config" />
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import dts from 'vite-plugin-dts';
+import { resolve } from 'path';
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 // https://vite.dev/config/
-import { dirname, join, resolve } from 'path';
-import { fileURLToPath } from 'url';
-import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
-import vue from '@vitejs/plugin-vue';
-import { playwright } from '@vitest/browser-playwright';
-import { defineConfig } from 'vite';
-import dts from 'vite-plugin-dts';
-
-const _dirname = typeof __dirname !== 'undefined' ? __dirname : dirname(fileURLToPath(import.meta.url));
-
-// More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
-    build: {
-        lib: {
-            entry: resolve(_dirname, 'lib/main.ts'),
-            name: 'VirtualsoftWidgets',
-            fileName: 'lib',
-        },
-        rollupOptions: {
-            external: ['vue'],
-            output: {
-                globals: { vue: 'Vue' },
-            },
-        },
+  build: {
+    lib: {
+      entry: resolve(__dirname, 'lib/main.ts'),
+      name: 'VsWidget',
+      fileName: 'lib',
     },
-    plugins: [vue(), dts({ rollupTypes: true, tsconfigPath: 'tsconfig.dts.json' })],
-    resolve: {
-        alias: {
-            '@': resolve(_dirname, 'src'),
+    rollupOptions: {
+      // make sure to externalize deps that shouldn't be bundled
+      // into your library
+      external: ['vue'],
+      output: {
+        // Provide global variables to use in the UMD build
+        // for externalized deps
+        globals: {
+          vue: 'Vue',
         },
+      },
     },
-    test: {
-        projects: [
-            {
-                extends: true,
-                plugins: [
-                    // The plugin will run tests for the stories defined in your Storybook config
-                    // See options at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon#storybooktest
-                    storybookTest({
-                        configDir: join(_dirname, '.storybook'),
-                    }),
-                ],
-                test: {
-                    name: 'storybook',
-                    browser: {
-                        enabled: true,
-                        headless: true,
-                        provider: playwright({}),
-                        instances: [
-                            {
-                                browser: 'chromium',
-                            },
-                        ],
-                    },
-                    setupFiles: ['.storybook/vitest.setup.ts'],
-                },
-            },
-        ],
+  },
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src'),
     },
-});
+  },
+  plugins: [vue(), dts({ rollupTypes: true })],
+})
